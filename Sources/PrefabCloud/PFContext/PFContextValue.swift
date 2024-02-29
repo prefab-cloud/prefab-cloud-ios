@@ -1,7 +1,7 @@
 
 import Foundation
 
-enum PFContextValue: Codable, Equatable {
+public enum PFContextValue: Codable, Equatable {
     case string(String)
     case int(Int)
     case double(Double)
@@ -13,7 +13,7 @@ enum PFContextValue: Codable, Equatable {
         case string, int, double, bool
     }
     
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
         case .string(let s):
@@ -27,7 +27,7 @@ enum PFContextValue: Codable, Equatable {
         }
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let key = container.allKeys.first
         switch key {
