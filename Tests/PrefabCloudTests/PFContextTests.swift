@@ -20,5 +20,6 @@ final class PFContextTests: XCTestCase {
         let decoded = try decoder.decode(PFContext.self, from: data)
         
         assert(decoded == context, "expected \(context), got \(decoded)")
+        assert(decoded.values["name"] == PFContextValue.string("Michael"))
     }
 }
