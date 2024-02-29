@@ -9,6 +9,10 @@ enum PFContextValue: Codable, Equatable {
     
     // MARK: Codable
     
+    enum CodingKeys: CodingKey {
+        case string, int, double, bool
+    }
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
@@ -21,10 +25,6 @@ enum PFContextValue: Codable, Equatable {
         case .bool(let b):
             try container.encode(b, forKey: .bool)
         }
-    }
-    
-    enum CodingKeys: CodingKey {
-        case string, int, double, bool
     }
     
     init(from decoder: Decoder) throws {
